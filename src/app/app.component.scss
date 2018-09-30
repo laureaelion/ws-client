@@ -112,12 +112,33 @@ body {
 
 .message {
   list-style: none;
-  border: 2px solid ;
-  border-radius: 50px;
-  width: auto;
-  height: auto;
-  text-align: center;
+  white-space: normal;
+  max-width: 700px;
+  
+  
   margin-top: 10px
 
 }
+
+#loginbox {
+  margin-top: 20px;
+}
+
+#form > div {
+  margin-bottom: 5px;
+}
+
+
+div {
+  &.user {
+    float: left;
+  }
+  &.moi {
+    float: right;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 

@@ -11,7 +11,6 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class AppComponent {
   title = 'ws-client';
 
- 
 
   /**
    * Instance d'un observable Websocket
@@ -25,7 +24,12 @@ export class AppComponent {
 
   public userInput: String = '';
 
+  public userName: String = '';
+
+  public noConnexion: Boolean = true;
+  
   constructor() {
+  
     
     console.log('connexion client WebSocket');
 
@@ -48,7 +52,14 @@ export class AppComponent {
       );
     
     }
+
+    
   
+    public toggleConnexion(): void {
+
+      this.noConnexion = !this.noConnexion;
+    }
+
  /** private _send(): void {
     console.log('envoie un nouveau message vers le serveur : ' + this.userInput);
     this._socket.next('blabla');
@@ -56,8 +67,12 @@ export class AppComponent {
   */
 
   public envoyer(): void {
+    const envelop: any = {};
+    envelop.userName = this.userName
+    envelop.message = this.userInput
+
     console.log('Envoie la saisie utilisateur vers le serveur : ' + this.userInput);
-    this._socket.next(this.userInput);
+    this._socket.next(envelop);
     this.userInput='';
   }
 }
